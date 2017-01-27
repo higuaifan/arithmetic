@@ -91,6 +91,19 @@ var simpleSelection = function (array) {
 };
 
 
+var bubble = function(array){
+  for(var i=array.length-1;i>-1;i--){
+      for(var j=0;j<i;j++){
+          if(array[j]>array[j+1]){
+              array[j]=array[j]^array[j+1];
+              array[j+1]=array[j]^array[j+1];
+              array[j]=array[j]^array[j+1];
+          }
+      }
+  }
+};
+
+
 straightInsert(testArray);
 console.log(testArray);
 
@@ -101,4 +114,8 @@ console.log(testArray);
 
 testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
 simpleSelection(testArray);
+console.log(testArray);
+
+testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
+bubble(testArray);
 console.log(testArray);
