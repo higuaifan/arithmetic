@@ -106,12 +106,13 @@ var bubble = function(array){
 
 //todo 不知道哪里写的有点不对，待优化
 var heap=function (array) {
-    var line=Math.ceil(Math.log(array.length)/Math.log(2));
-    var end=Math.pow(2,line-1)-1;
     var returnArr=[];
-    for(var i=0;i<array.length;i++){
-        for(var i=end;i>-1;i--){
-            change(array,i);
+    var length=array.length;
+    for(var i=0;i<length;i++){
+        var line=Math.ceil(Math.log(array.length+1)/Math.log(2));
+        var end=Math.pow(2,line-1)-2;
+        for(var j=end;j>-1;j--){
+            change(array,j);
         }
         returnArr.push(array.shift());
     }
@@ -119,39 +120,23 @@ var heap=function (array) {
 };
 var change=function(array,root){
     //todo 好像可以优化 直接*2就可以了好像
-    var line=Math.ceil(Math.log(root)/Math.log(2));
-    var preLine=Math.pow(2,line);
-    var more=root-preLine;
-    var left=(preLine+more)*2+1;//左节点的index
-    var changeFlag=0;
+    var left=root*2+1;//左节点的index
     if(array[left]==null)
         return;
     if(array[left]<array[root]){
-        changeFlag=1;
         array[left]=array[left]^array[root];
         array[root]=array[left]^array[root];
         array[left]=array[left]^array[root];
     }
     var right=left+1;
+
     if(array[right]==null)
         return;
     if(array[right]<array[root]){
-        changeFlag+=2;
         array[right]=array[right]^array[root];
         array[root]=array[right]^array[root];
         array[right]=array[right]^array[root];
     }
-    if(changeFlag==1){//only left
-        change(array,left);
-    }
-    if(changeFlag==2){//only right
-        change(array,right);
-    }
-    if(changeFlag==3){//both
-        change(array,left);
-        change(array,right);
-    }
-
 };
 
 var startTime=Date.now();
