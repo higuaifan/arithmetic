@@ -74,110 +74,176 @@ var shell = function (array) {
 
 
 var simpleSelection = function (array) {
-    for(var i = 0;i<array.length;i++){
-        var minIndex=i;
-        for(var j = i;j<array.length;j++){
-            if(array[minIndex]>array[j]){
-                minIndex=j;
+    for (var i = 0; i < array.length; i++) {
+        var minIndex = i;
+        for (var j = i; j < array.length; j++) {
+            if (array[minIndex] > array[j]) {
+                minIndex = j;
             }
         }
-        if(minIndex!=i){
-            array[i]=array[i]^array[minIndex];
-            array[minIndex]=array[i]^array[minIndex];
-            array[i]=array[i]^array[minIndex];
+        if (minIndex != i) {
+            array[i] = array[i] ^ array[minIndex];
+            array[minIndex] = array[i] ^ array[minIndex];
+            array[i] = array[i] ^ array[minIndex];
         }
 
     }
 };
 
 
-var bubble = function(array){
-  for(var i=array.length-1;i>-1;i--){
-      for(var j=0;j<i;j++){
-          if(array[j]>array[j+1]){
-              array[j]=array[j]^array[j+1];
-              array[j+1]=array[j]^array[j+1];
-              array[j]=array[j]^array[j+1];
-          }
-      }
-  }
+var bubble = function (array) {
+    for (var i = array.length - 1; i > -1; i--) {
+        for (var j = 0; j < i; j++) {
+            if (array[j] > array[j + 1]) {
+                array[j] = array[j] ^ array[j + 1];
+                array[j + 1] = array[j] ^ array[j + 1];
+                array[j] = array[j] ^ array[j + 1];
+            }
+        }
+    }
 };
 
 
 //todo 不知道哪里写的有点不对，待优化
-var heap=function (array) {
-    var returnArr=[];
-    var length=array.length;
-    for(var i=0;i<length;i++){
-        var line=Math.ceil(Math.log(array.length+1)/Math.log(2));
-        var end=Math.pow(2,line-1)-2;
-        for(var j=end;j>-1;j--){
-            change(array,j);
+var heap = function (array) {
+    var returnArr = [];
+    var length = array.length;
+    for (var i = 0; i < length; i++) {
+        var line = Math.ceil(Math.log(array.length + 1) / Math.log(2));
+        var end = Math.pow(2, line - 1) - 2;
+        for (var j = end; j > -1; j--) {
+            change(array, j);
         }
         returnArr.push(array.shift());
     }
     return returnArr;
 };
-var change=function(array,root){
+var change = function (array, root) {
     //todo 好像可以优化 直接*2就可以了好像
-    var left=root*2+1;//左节点的index
-    if(array[left]==null)
+    var left = root * 2 + 1;//左节点的index
+    if (array[left] == null)
         return;
-    if(array[left]<array[root]){
-        array[left]=array[left]^array[root];
-        array[root]=array[left]^array[root];
-        array[left]=array[left]^array[root];
+    if (array[left] < array[root]) {
+        array[left] = array[left] ^ array[root];
+        array[root] = array[left] ^ array[root];
+        array[left] = array[left] ^ array[root];
     }
-    var right=left+1;
+    var right = left + 1;
 
-    if(array[right]==null)
+    if (array[right] == null)
         return;
-    if(array[right]<array[root]){
-        array[right]=array[right]^array[root];
-        array[root]=array[right]^array[root];
-        array[right]=array[right]^array[root];
+    if (array[right] < array[root]) {
+        array[right] = array[right] ^ array[root];
+        array[root] = array[right] ^ array[root];
+        array[right] = array[right] ^ array[root];
     }
 };
 
-var startTime=Date.now();
-for(var i=0;i<10000;i++){
+
+var merge = function (array) {
+    return scan(array)[0];
+};
+
+var scan = function (array) {
+    var arrList = [];
+    for (var i = 0; i < array.length; i = i + 2) {
+        if (array[i + 1] != null) {
+            arrList.push(compare(array[i], array[i + 1]));
+        } else {
+            arrList.push(array[i]);
+            break;
+        }
+    }
+    if (arrList.length > 1)
+        arrList = scan(arrList);
+    return arrList;
+};
+
+
+var compare = function (arrayA, arrayB) {
+    var returnArray = [];
+    var a, b;
+    if (typeof arrayA == 'number') {
+        a = [arrayA];
+    } else {
+        a = arrayA.concat();
+    }
+    if (typeof arrayB == 'number') {
+        b = [arrayB];
+    } else {
+        b = arrayB.concat();
+    }
+
+    var lengthA = a.length;
+    var lengthB = b.length;
+    var i = 0, j = 0;
+
+
+    //todo 这里的算法可以优化的
+    while (i < lengthA && j < lengthB) {
+        if (arrayA[i] < arrayB[j]) {
+            returnArray.push(a.shift());
+            i++;
+        }
+        else {
+            returnArray.push(b.shift());
+            j++;
+        }
+    }
+    returnArray = returnArray.concat(a);
+    returnArray = returnArray.concat(b);
+    return returnArray;
+};
+
+
+var startTime = Date.now();
+for (var i = 0; i < 10000; i++) {
     straightInsert(testArray);
 }
-console.log(testArray,Date.now()-startTime);
+console.log(testArray, Date.now() - startTime);
 
-startTime=Date.now();
-for(var i=0;i<10000;i++){
+startTime = Date.now();
+for (var i = 0; i < 10000; i++) {
     testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
     shell(testArray);
 }
-console.log(testArray,Date.now()-startTime);
+console.log(testArray, Date.now() - startTime);
 
 
-startTime=Date.now();
-for(var i=0;i<10000;i++){
+startTime = Date.now();
+for (var i = 0; i < 10000; i++) {
     testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
     simpleSelection(testArray);
 }
-console.log(testArray,Date.now()-startTime);
+console.log(testArray, Date.now() - startTime);
 
-startTime=Date.now();
-for(var i=0;i<10000;i++){
+startTime = Date.now();
+for (var i = 0; i < 10000; i++) {
     testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
     bubble(testArray);
 }
-console.log(testArray,Date.now()-startTime);
+console.log(testArray, Date.now() - startTime);
 
 
-startTime=Date.now();
-for(var i=0;i<10000;i++){
+startTime = Date.now();
+for (var i = 0; i < 10000; i++) {
     testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-    var newArr=heap(testArray);
+    var newArr = heap(testArray);
 }
-console.log(newArr,Date.now()-startTime);
+console.log(newArr, Date.now() - startTime);
 
-startTime=Date.now();
-for(var i=0;i<10000;i++){
+
+startTime = Date.now();
+for (var i = 0; i < 10000; i++) {
+    testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
+    testArray = merge(testArray);
+}
+console.log(testArray, Date.now() - startTime);
+
+startTime = Date.now();
+for (var i = 0; i < 10000; i++) {
     testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
     testArray.sort();
 }
-console.log(testArray,Date.now()-startTime);
+console.log(testArray, Date.now() - startTime);
+

@@ -6,3 +6,4 @@
 3. 简单选择 Simple Selection Sort
 4. 冒泡 Bubble Sort
 5. 堆 Heap Sort
+6. 归并 Merge Sort
