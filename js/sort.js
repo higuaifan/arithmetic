@@ -143,7 +143,6 @@ var change = function (array, root) {
 var merge = function (array) {
     return scan(array)[0];
 };
-
 var scan = function (array) {
     var arrList = [];
     for (var i = 0; i < array.length; i = i + 2) {
@@ -158,8 +157,6 @@ var scan = function (array) {
         arrList = scan(arrList);
     return arrList;
 };
-
-
 var compare = function (arrayA, arrayB) {
     var returnArray = [];
     var a, b;
@@ -192,6 +189,42 @@ var compare = function (arrayA, arrayB) {
     }
     returnArray = returnArray.concat(a);
     returnArray = returnArray.concat(b);
+    return returnArray;
+};
+
+
+var quick = function (array) {
+    return quickScan(array);
+};
+
+var quickScan = function (array) {
+    if(array.length<2)
+        return array;
+    var i = 0, j = array.length - 1;//i: min index , j: max index
+    var k = 0;
+    while(i<j){
+        for (; j > i-1; j--) {
+            if (array[k] > array[j]) {
+                array[k] = array[k] ^ array[j];
+                array[j] = array[k] ^ array[j];
+                array[k] = array[k] ^ array[j];
+                k=j;
+                break;
+            }
+        }
+        for (; i < j + 1; i++) {
+            if (array[k] < array[i]) {
+                array[k] = array[k] ^ array[i];
+                array[i] = array[k] ^ array[i];
+                array[k] = array[k] ^ array[i];
+                k=i;
+                break;
+            }
+        }
+    }
+    var returnArray=quickScan(array.slice(0,k));
+    returnArray=returnArray.concat(array[k]);
+    returnArray=returnArray.concat(quickScan(array.slice(k+1,array.length)));
     return returnArray;
 };
 
@@ -237,6 +270,13 @@ startTime = Date.now();
 for (var i = 0; i < 10000; i++) {
     testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
     testArray = merge(testArray);
+}
+console.log(testArray, Date.now() - startTime);
+
+startTime = Date.now();
+for (var i = 0; i < 10000; i++) {
+    testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
+    testArray = quick(testArray);
 }
 console.log(testArray, Date.now() - startTime);
 

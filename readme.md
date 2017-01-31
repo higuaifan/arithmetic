@@ -7,3 +7,4 @@
 4. 冒泡 Bubble Sort
 5. 堆 Heap Sort
 6. 归并 Merge Sort
+7. 快速 Quick Sort
