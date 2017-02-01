@@ -2,11 +2,7 @@
 
 
 var testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-var swap=function(a,b){
-    a=a^b;
-    b=a^b;
-    a=a^b;
-};
+
 
 //todo 这个写法好像有问题
 // console.log(testArray);
@@ -215,7 +211,9 @@ var quickScan = function (array) {
     while(i<j){
         for (; j > i-1; j--) {
             if (array[k] > array[j]) {
-                swap(array[k],array[i])
+                array[k] = array[k] ^ array[i];
+                array[i] = array[k] ^ array[i];
+                array[k] = array[k] ^ array[i];
                 k=j;
                 break;
             }
