@@ -2,6 +2,11 @@
 
 
 var testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
+var swap=function(a,b){
+    a=a^b;
+    b=a^b;
+    a=a^b;
+};
 
 //todo 这个写法好像有问题
 // console.log(testArray);
@@ -159,16 +164,20 @@ var scan = function (array) {
 };
 var compare = function (arrayA, arrayB) {
     var returnArray = [];
-    var a, b;
+    var a, b,listA,listB;
     if (typeof arrayA == 'number') {
         a = [arrayA];
+        listA=[arrayA];
     } else {
         a = arrayA.concat();
+        listA=arrayA.concat();
     }
     if (typeof arrayB == 'number') {
         b = [arrayB];
+        listB=[arrayB];
     } else {
         b = arrayB.concat();
+        listB=arrayB.concat();
     }
 
     var lengthA = a.length;
@@ -178,7 +187,8 @@ var compare = function (arrayA, arrayB) {
 
     //todo 这里的算法可以优化的
     while (i < lengthA && j < lengthB) {
-        if (arrayA[i] < arrayB[j]) {
+
+        if (listA[i] < listB[j]) {
             returnArray.push(a.shift());
             i++;
         }
@@ -189,6 +199,7 @@ var compare = function (arrayA, arrayB) {
     }
     returnArray = returnArray.concat(a);
     returnArray = returnArray.concat(b);
+
     return returnArray;
 };
 
@@ -196,7 +207,6 @@ var compare = function (arrayA, arrayB) {
 var quick = function (array) {
     return quickScan(array);
 };
-
 var quickScan = function (array) {
     if(array.length<2)
         return array;
@@ -205,9 +215,7 @@ var quickScan = function (array) {
     while(i<j){
         for (; j > i-1; j--) {
             if (array[k] > array[j]) {
-                array[k] = array[k] ^ array[j];
-                array[j] = array[k] ^ array[j];
-                array[k] = array[k] ^ array[j];
+                swap(array[k],array[i])
                 k=j;
                 break;
             }
@@ -268,7 +276,7 @@ console.log(newArr, Date.now() - startTime);
 
 startTime = Date.now();
 for (var i = 0; i < 10000; i++) {
-    testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
+testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
     testArray = merge(testArray);
 }
 console.log(testArray, Date.now() - startTime);
