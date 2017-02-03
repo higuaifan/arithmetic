@@ -19,6 +19,7 @@ var straightInsert = function (array) {
 
         }
     }
+    return array;
 };
 //。。瞎写的一个算步长的函数
 //todo 封装这两个函数
@@ -235,33 +236,20 @@ var quickScan = function (array) {
 };
 
 
-var startTime = Date.now();
-for (var i = 0; i < 10000; i++) {
-    straightInsert(testArray);
-}
-console.log(testArray, Date.now() - startTime);
+var timer=function(func){
+    var startTime = Date.now();
+    for (var i = 0; i < 10000; i++) {
+        testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
+        var newArr = heap(testArray);
+    }
+    console.log(newArr, Date.now() - startTime);
+};
 
-startTime = Date.now();
-for (var i = 0; i < 10000; i++) {
-    testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-    shell(testArray);
-}
-console.log(testArray, Date.now() - startTime);
+timer(straightInsert);
+timer(shell);
+timer(simpleSelection);
+timer(bubble);
 
-
-startTime = Date.now();
-for (var i = 0; i < 10000; i++) {
-    testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-    simpleSelection(testArray);
-}
-console.log(testArray, Date.now() - startTime);
-
-startTime = Date.now();
-for (var i = 0; i < 10000; i++) {
-    testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-    bubble(testArray);
-}
-console.log(testArray, Date.now() - startTime);
 
 
 startTime = Date.now();
