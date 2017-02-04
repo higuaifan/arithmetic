@@ -212,9 +212,9 @@ var quickScan = function (array) {
     while(i<j){
         for (; j > i-1; j--) {
             if (array[k] > array[j]) {
-                array[k] = array[k] ^ array[i];
-                array[i] = array[k] ^ array[i];
-                array[k] = array[k] ^ array[i];
+                array[k] = array[k] ^ array[j];
+                array[j] = array[k] ^ array[j];
+                array[k] = array[k] ^ array[j];
                 k=j;
                 break;
             }
