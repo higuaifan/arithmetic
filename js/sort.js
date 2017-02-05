@@ -72,6 +72,7 @@ var shell = function (array) {
 
         }
     }
+    return array;
 };
 
 
@@ -90,6 +91,7 @@ var simpleSelection = function (array) {
         }
 
     }
+    return array;
 };
 
 
@@ -103,6 +105,7 @@ var bubble = function (array) {
             }
         }
     }
+    return array;
 };
 
 
@@ -245,39 +248,16 @@ var timer=function(func){
     console.log(newArr, Date.now() - startTime);
 };
 
+var jsSort=function(array){
+    array.sort();
+    return array;
+}
+
 timer(straightInsert);
 timer(shell);
 timer(simpleSelection);
 timer(bubble);
-
-
-
-startTime = Date.now();
-for (var i = 0; i < 10000; i++) {
-    testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-    var newArr = heap(testArray);
-}
-console.log(newArr, Date.now() - startTime);
-
-
-startTime = Date.now();
-for (var i = 0; i < 10000; i++) {
-testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-    testArray = merge(testArray);
-}
-console.log(testArray, Date.now() - startTime);
-
-startTime = Date.now();
-for (var i = 0; i < 10000; i++) {
-    testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-    testArray = quick(testArray);
-}
-console.log(testArray, Date.now() - startTime);
-
-startTime = Date.now();
-for (var i = 0; i < 10000; i++) {
-    testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-    testArray.sort();
-}
-console.log(testArray, Date.now() - startTime);
-
+timer(heap);
+timer(merge);
+timer(quick);
+timer(jsSort);
