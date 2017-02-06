@@ -2,20 +2,40 @@
  * Created by Hi Guaifan on 2017/2/6.
  */
 import Sort from './src/sort';
-let sort=new Sort();
+let sort = new Sort();
+let sortDiv = document.getElementById('sort');
 
-let timer=function(func) {
+let timer = function (func) {
     let startTime = Date.now();
-    let testArray;
+    let arr;
     let newArr;
-    for (let i = 0; i < 10000; i++) {
-        testArray = [5, 4, 3, 2, 1, 49, 38, 65, 97, 76, 13, 27, 49, 13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10];
-        newArr = func(testArray);
+    for (let i = 0; i < 100; i++) {
+
+        let testArray = [];
+        for (let i = 0; i < 1000; i++) {
+            testArray.push(i*Math.random()*10);
+        }
+        testArray.sort(function () {
+            return Math.random() - 0.5;
+        });
+
+        arr = testArray.concat();
+        newArr = func(arr);
     }
-    console.log(newArr, Date.now() - startTime);
+    const time = Date.now() - startTime;
+
+    let div = document.createElement('tr');
+    div.innerHTML = '<td>' + func.name + ':</td><td>[';
+    // for (let i of newArr) {
+    //     div.innerHTML += ' ' + Math.ceil(i) + ' ';
+    // }
+    div.innerHTML += ']</td><td>用时:' + time + '</td>';
+    sortDiv.append(div);
+
+    // console.log(func.name,newArr, Date.now() - startTime);
 };
 
-let test=function() {
+let test = function () {
     timer(sort.straightInsert);
     timer(sort.shell);
     timer(sort.simpleSelection);

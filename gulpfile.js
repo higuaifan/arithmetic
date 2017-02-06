@@ -29,7 +29,9 @@ gulp.task('copyIndexJs', function () {
 
 gulp.task('watch', ['copyIndexJs'], function () {
     livereload.listen();
-    gulp.watch(src.js, ['copyIndexJs']);
+    gulp.watch(src.js, ['copyIndexJs'],function(){
+
+    });
 });
 
 gulp.task('default', ['watch']);
