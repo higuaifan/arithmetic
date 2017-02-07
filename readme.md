@@ -14,5 +14,5 @@
 
 ## 查找
 
-1. 顺序 In Order To Find
+1. 顺序 Sequential Search
 2. 二分 Binary Search

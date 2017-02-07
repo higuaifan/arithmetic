@@ -4,6 +4,8 @@
 import Sort from './src/sort';
 import Find from './src/find';
 let sort = new Sort();
+let find = new Find();
+
 let sortDiv = document.getElementById('sort');
 
 // let timer = function (func) {
@@ -47,11 +49,10 @@ let sortDiv = document.getElementById('sort');
 // };
 // test();
 
-let find = new Find();
 
 let findTimer=function(func){
     let array = [1, 2, 3, 4, 5, 6, 7, 8, 9,10];
     console.log(func.name,func(array,5));
 };
 findTimer(find.binary);
-findTimer(find.inOrderTo);
+findTimer(find.sequential);

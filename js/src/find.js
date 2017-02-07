@@ -2,9 +2,10 @@
  * Created by Administrator on 2017/2/7.
  */
 export default class Find {
-    inOrderTo(array,num){
-        for(let i=0,len=array.length;i<len;i++){
-            if(array[i]==num)
+
+    sequential(array, num) {
+        for (let i = 0, len = array.length; i < len; i++) {
+            if (array[i] == num)
                 return i;
         }
         return null;
@@ -17,21 +18,16 @@ export default class Find {
         let left = 0;
         let right = array.length - 1;
         let mid;
-        while (left != right) {
-            mid = Math.ceil((right + left) / 2);
-            if(mid==left||mid==right)
-                break;
+        while (left <= right) {
+            mid = (right + left) >> 1;
             if (array[mid] > num)
-                right = mid;
+                right = mid-1;
             else if (array[mid] < num)
-                left = mid;
+                left = mid+1;
             else
                 return mid;
         }
-        if (array[left] == num)
-            return left;
-        else if(array[right] == num)
-            return right;
         return null;
     }
+
 }
