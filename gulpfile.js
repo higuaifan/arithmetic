@@ -11,7 +11,8 @@ const gulp = require('gulp'),
     changed = require('gulp-changed'),
     fileinclude  = require('gulp-file-include');
 const src = {
-    js: '*.js',
+    js: 'js/src/*.js',
+    jsIndex: 'js/index.js'
 };
 
 
@@ -29,9 +30,8 @@ gulp.task('copyIndexJs', function () {
 
 gulp.task('watch', ['copyIndexJs'], function () {
     livereload.listen();
-    gulp.watch(src.js, ['copyIndexJs'],function(){
-
-    });
+    gulp.watch(src.js, ['copyIndexJs']);
+    gulp.watch(src.jsIndex, ['copyIndexJs']);
 });
 
 gulp.task('default', ['watch']);

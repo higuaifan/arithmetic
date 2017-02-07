@@ -54,3 +54,4 @@ let findTimer=function(func){
     console.log(func.name,func(array,5));
 };
 findTimer(find.binary);
+findTimer(find.inOrderTo);
