@@ -58,7 +58,7 @@ export default class Find {
         return obj;
     }
 
-    depthFirstSearch(tree,num){
+    depthFirst(tree,num){
         let search=function(limb){
             if(limb.key==num)
                 return limb;
@@ -69,6 +69,28 @@ export default class Find {
             return search(limb.left)||search(limb.right);
         };
         return search(tree);
+    }
+
+    breadthFirst(tree,num){
+        let nextArray=[];
+        let search=function(limb){
+            nextArray=[];
+            for(let obj of limb){
+                if(obj.key==num)
+                    return obj;
+                if(obj.left!=null)
+                    nextArray.push(obj.left);
+                else
+                    continue;
+                if(obj.right!=null)
+                    nextArray.push(obj.right);
+            }
+            if(nextArray.length==0)
+                return null;
+            return search(nextArray);
+        };
+        nextArray=[tree];
+        return search(nextArray);
     }
 
 }
