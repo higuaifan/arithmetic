@@ -21,13 +21,42 @@ export default class Find {
         while (left <= right) {
             mid = (right + left) >> 1;
             if (array[mid] > num)
-                right = mid-1;
+                right = mid - 1;
             else if (array[mid] < num)
-                left = mid+1;
+                left = mid + 1;
             else
                 return mid;
         }
         return null;
     }
+
+    arrayToTree(array) {
+        let obj = {};
+        let nextArray = [];
+        let input = function (arr) {
+            nextArray = [];
+            for (let obj of arr) {
+                if (array.length == 0)
+                    return;
+                let objLeft = {};
+                nextArray.push(objLeft);
+                objLeft.key = array.shift();
+                obj.left = objLeft;
+                if (array.length == 0)
+                    return;
+                let objRight = {};
+                nextArray.push(objRight);
+                objRight.key = array.shift();
+                obj.right = objRight;
+            }
+            if (array.length > 0)
+                input(nextArray);
+        };
+        obj.key=array.shift();
+        nextArray=[obj];
+        input(nextArray);
+        return obj;
+    }
+
 
 }
