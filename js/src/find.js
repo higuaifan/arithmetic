@@ -58,5 +58,17 @@ export default class Find {
         return obj;
     }
 
+    depthFirstSearch(tree,num){
+        let search=function(limb){
+            if(limb.key==num)
+                return limb;
+            if(limb.left==null)
+                return null;
+            if(limb.right==null)
+                return search(limb.left);
+            return search(limb.left)||search(limb.right);
+        };
+        return search(tree);
+    }
 
 }

@@ -16,3 +16,4 @@
 
 1. 顺序 Sequential Search
 2. 二分 Binary Search
+3. 深度优先 Depth First Search
