@@ -8,9 +8,10 @@
 2. 希尔 Shell's Sort
 3. 简单选择 Simple Selection Sort
 4. 冒泡 Bubble Sort
-5. 堆 Heap Sort
-6. 归并 Merge Sort
-7. 快速 Quick Sort
+5. 鸡尾酒 Cocktail Sort
+6. 堆 Heap Sort
+7. 归并 Merge Sort
+8. 快速 Quick Sort
 
 ## 查找
 

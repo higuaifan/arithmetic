@@ -1,5 +1,12 @@
 // todo 模块化
 export default class Sort {
+    jsSort(array) {
+        array.sort(function (a, b) {
+            return a - b;
+        });
+        return array;
+    }
+
 //todo 用step抽象步长
     straightInsert(array) {
         let sentry;
@@ -223,10 +230,35 @@ export default class Sort {
         return quickScan(array);
     };
 
-    jsSort(array) {
-        array.sort(function (a, b) {
-            return a - b;
-        });
+    cocktail(array) {
+        let left = 0, right = array.length - 1;//边界
+        let swap = function (a, b) {
+            if(a==b)return;
+            array[a] = array[a] ^ array[b];
+            array[b] = array[a] ^ array[b];
+            array[a] = array[a] ^ array[b];
+        };
+        let min = left;
+        while (left < right) {
+            for (let i = left + 1; i <= right; i++) {
+                if (array[i] > array[min]) {
+                    min = i;
+                }
+            }
+            swap(right, min);
+            right--;
+            min = right;
+            for (let i = right; i >= left; i--) {
+                if (array[i] < array[min]) {
+                    min = i;
+                }
+            }
+            swap(left, min);
+            left++;
+        }
         return array;
-    };
+
+    }
+
+
 }
