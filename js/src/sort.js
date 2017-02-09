@@ -260,5 +260,26 @@ export default class Sort {
 
     }
 
+    bucket(array){
+        let bucketArray=[];
+        let keyList=[];
+        let sort=new Sort();
+        for(let i=0;i<array.length;i++){
+            let num=array[i];
+            let key=Math.ceil(num/100);
+            if(bucketArray[key]!=undefined){
+                bucketArray[key].push(num);
+            }else{
+                keyList.push(key);
+                bucketArray[key]=[num];
+            }
+        }
+        keyList=sort.quick(keyList);
+        let returnArray=[];
+        for(let i=0;i<keyList.length;i++){
+            returnArray=returnArray.concat(sort.quick(bucketArray[keyList[i]]));
+        }
+        return returnArray;
+    }
 
 }

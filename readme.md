@@ -12,6 +12,7 @@
 6. 堆 Heap Sort
 7. 归并 Merge Sort
 8. 快速 Quick Sort
+9. 桶 Bucket Sort
 
 ## 查找
 

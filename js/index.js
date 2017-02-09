@@ -12,11 +12,12 @@ let timer = function (func) {
     let startTime = Date.now();
     let arr;
     let newArr;
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 200; i++) {
 
         let testArray = [];
         for (let i = 0; i < 1000; i++) {
-            testArray.push(i*Math.random()*10);
+            // testArray.push(i*Math.random()*10);
+            testArray.push(i*10);
         }
         testArray.sort(function () {
             return Math.random() - 0.5;
@@ -38,6 +39,7 @@ let timer = function (func) {
     // console.log(func.name,newArr, Date.now() - startTime);
 };
 let test = function () {
+    timer(sort.jsSort);
     timer(sort.straightInsert);
     timer(sort.shell);
     timer(sort.simpleSelection);
@@ -46,7 +48,7 @@ let test = function () {
     timer(sort.heap);
     timer(sort.merge);
     timer(sort.quick);
-    timer(sort.jsSort);
+    timer(sort.bucket);
 };
 test();
 
@@ -65,5 +67,5 @@ test();
 //     console.log(find.breadthFirst(testTree,i));
 // }
 
-let testArr=[3,1,4,7,5,6,2,0];
-console.log(sort.cocktail(testArr));
+let testArr=[3,1,4,7,5,55,996,2,0];
+console.log(sort.bucket(testArr));
