@@ -38,4 +38,17 @@ export default class Others {
         return getUnable(chessboard,0);
     }
 
+    hundredChicken(n){
+        let cockMax=n/5;
+        let henMax=n/3;
+        for(let cock=0;cock<=cockMax;cock++){
+            for(let hen=0;hen<=henMax&&hen<=n-cock;hen++){
+                let chick=n-cock-hen;
+                if(100==chick/3+hen*3+cock*5)
+                    console.log(cock,hen,chick);
+            }
+        }
+
+
+    }
 }

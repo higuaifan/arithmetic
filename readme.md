@@ -25,3 +25,4 @@
 ## 其他
 
 1. 八皇后 Eight Queen Question
+2. 百鸡 One Hundred Chicken Question

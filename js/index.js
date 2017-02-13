@@ -73,8 +73,9 @@ let others = new Others();
 // console.log(others.eightQueen(4));
 // console.log(others.eightQueen(8));
 
-let startTime = Date.now();
-for(let i=0;i<10000;i++){
-    others.eightQueen(8);
-}
-console.log(Date.now()-startTime);
+// let startTime = Date.now();
+// for(let i=0;i<10000;i++){
+//     others.eightQueen(8);
+// }
+// console.log(Date.now()-startTime);
+others.hundredChicken(100);
