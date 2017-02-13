@@ -1,4 +1,3 @@
-// todo 模块化
 export default class Sort {
     jsSort(array) {
         array.sort(function (a, b) {
@@ -258,7 +257,7 @@ export default class Sort {
         }
         return array;
 
-    }
+    };
 
     bucket(array){
         let bucketArray=[];
@@ -266,7 +265,7 @@ export default class Sort {
         let sort=new Sort();
         for(let i=0;i<array.length;i++){
             let num=array[i];
-            let key=Math.ceil(num/100);
+            let key=Math.ceil(num/10);
             if(bucketArray[key]!=undefined){
                 bucketArray[key].push(num);
             }else{
@@ -280,6 +279,6 @@ export default class Sort {
             returnArray=returnArray.concat(sort.quick(bucketArray[keyList[i]]));
         }
         return returnArray;
-    }
+    };
 
 }
