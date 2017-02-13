@@ -4,10 +4,6 @@
 export default class Others {
     eightQueen(n) {
         let chessboard = [];
-        let unique = function (array) {
-            const seen = new Map();
-            return array.filter((a) => !seen.has(a) && seen.set(a, 1));
-        };
         let has = function (array, num) {
             let len = array.length;
             for (let i = 0; i < len; i++) {
@@ -26,9 +22,8 @@ export default class Others {
                 if (chessboard[i] + step < n)
                     arr.push(chessboard[i] + step);
             }
-            let uniqueArr = unique(arr);
             for (let i = 0; i < n; i++) {
-                if (has(uniqueArr, i))
+                if (has(arr, i))
                     continue;
                 let testArr = chessboard.concat(i);
                 if(testArr.length==n)
@@ -42,4 +37,5 @@ export default class Others {
         };
         return getUnable(chessboard,0);
     }
+
 }

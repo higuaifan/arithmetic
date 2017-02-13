@@ -69,7 +69,12 @@ let others = new Others();
 // let testArr=[3,1,4,7,5,55,996,2,0];
 // console.log(sort.bucket(testArr));
 
-console.log(others.eightQueen(1));
-console.log(others.eightQueen(4));
-console.log(others.eightQueen(8));
+// console.log(others.eightQueen(1));
+// console.log(others.eightQueen(4));
+// console.log(others.eightQueen(8));
 
+let startTime = Date.now();
+for(let i=0;i<10000;i++){
+    others.eightQueen(8);
+}
+console.log(Date.now()-startTime);
