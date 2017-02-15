@@ -24,5 +24,6 @@
 
 ## 其他
 
-1. 八皇后 Eight Queen Question
-2. 百鸡 One Hundred Chicken Question
+1. 八皇后 Eight Queen Problem
+2. 百鸡 One Hundred Chicken Problem
+3. 约瑟夫环 Josephus Problem

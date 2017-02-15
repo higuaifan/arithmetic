@@ -78,4 +78,6 @@ let others = new Others();
 //     others.eightQueen(8);
 // }
 // console.log(Date.now()-startTime);
-others.hundredChicken(100);
+// others.hundredChicken(100);
+
+console.log(others.JosephusProblem(5,3));
