@@ -80,4 +80,10 @@ let others = new Others();
 // console.log(Date.now()-startTime);
 // others.hundredChicken(100);
 
-console.log(others.JosephusProblem(5,3));
+
+let resArray = [{'weight': 3, 'num': 5},
+    {'weight': 4, 'num': 2},
+    {'weight': 5, 'num': 1}];
+
+
+others.Knapsack(resArray, 10);

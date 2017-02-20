@@ -52,19 +52,51 @@ export default class Others {
 
     JosephusProblem(length, step) {
         //不用公式
-        let arr=[];
-        for(let i=0;i<length;i++)
-            arr.push(i+1);
-        let kill=function (start) {
-            let len=arr.length;
-            if(len==1)
+        let arr = [];
+        for (let i = 0; i < length; i++)
+            arr.push(i + 1);
+        let kill = function (start) {
+            let len = arr.length;
+            if (len == 1)
                 return arr[0];
-            let key=(start+step-1)%arr.length;
-            arr.splice(key,1);
+            let key = (start + step - 1) % arr.length;
+            arr.splice(key, 1);
             return kill(key);
         };
         kill(0);
         return arr[0];
+    }
+
+    Knapsack(resArray, knapsack) {
+        let result = [];
+        let resFunc = function (i, top) {
+            let res = resArray[i];
+            let max = Math.floor(top / res.weight);
+            if (res.num < max)
+                max = res.num;
+            for (let n = max; n >= 0; n--) {
+
+                let newTop = top - n * res.weight;
+                result.push({'id': i, 'num': n});
+                if (i + 1 < resArray.length) {
+                    resFunc(i + 1, newTop);
+                    result.pop();
+                }
+                else {
+                    print(result);
+                    result.pop();
+                    break;
+                }
+            }
+        };
+        let print = function (obj) {
+            for (let o of obj) {
+                console.log('编号:' + o.id + '    数量' + o.num);
+            }
+            console.log('\n');
+
+        };
+        resFunc(0, knapsack);
     }
 
 }
