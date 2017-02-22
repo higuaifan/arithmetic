@@ -86,4 +86,5 @@ let resArray = [{'weight': 3, 'num': 5},
     {'weight': 5, 'num': 1}];
 
 
-others.Knapsack(resArray, 10);
+// others.Knapsack(resArray, 10);
+others.house(0,0,8,8);

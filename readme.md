@@ -28,3 +28,4 @@
 2. 百鸡 One Hundred Chicken Problem
 3. 约瑟夫环 Josephus Problem
 4. 背包 Knapsack Problem
+5. 马踏棋盘 Horse Jump Problem 

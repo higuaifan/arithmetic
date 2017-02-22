@@ -99,4 +99,50 @@ export default class Others {
         resFunc(0, knapsack);
     }
 
+    house(x, y, height, width) {
+        let testNum = [{'x': -1, 'y': 2},
+            {'x': 1, 'y': 2},
+            {'x': -2, 'y': 1},
+            {'x': 2, 'y': 1},
+            {'x': -2, 'y': -1},
+            {'x': -1, 'y': -2},
+            {'x': 2, 'y': -1},
+            {'x': 1, 'y': -2},];
+        let print = function (obj) {
+            for (let o of obj) {
+                console.log('x:' + o.x + '    y:' + o.y);
+            }
+            console.log('\n');
+
+        };
+        let jump = function (jumpArray, a, b, times) {
+            let arr = jumpArray.concat();
+            times++;
+            for (let key of testNum) {
+                x = a + key.x;
+                y = b + key.y;
+                if (x >= 0 && x < width && y >= 0 && y < height) {
+                    let flag = false;
+                    for (let test of arr) {
+                        if (x == test.x && y == test.y) {
+                            flag = true;
+                        }
+                    }
+                    if (!flag) {
+                        arr.push({'x': x, 'y': y});
+                        if (times == (height * width)) {
+                            print(arr);
+                            return true;
+                        }
+                        if (jump(arr, x, y, times)) {
+                            return true;
+                        }
+                        arr.pop();
+                    }
+                }
+            }
+            return false;
+        };
+        jump([{'x': x, 'y': y}], x, y, 1);
+    }
 }
