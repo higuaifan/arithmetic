@@ -145,4 +145,13 @@ export default class Others {
         };
         jump([{'x': x, 'y': y}], x, y, 1);
     }
+    hammingDistance = function(x, y) {
+        let t=(x^y).toString(2);
+        let flag=0;
+        for(let i in t){
+            if(t[i]=='1')
+                flag++;
+        }
+        return flag;
+    };
 }
