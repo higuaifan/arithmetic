@@ -30,3 +30,4 @@
 4. 背包 Knapsack Problem
 5. 马踏棋盘 Horse Jump Problem 
 6. 汉明距离 Hamming Distance
+7. 求补码 Number Complement
