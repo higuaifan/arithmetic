@@ -31,3 +31,4 @@
 5. 马踏棋盘 Horse Jump Problem 
 6. 汉明距离 Hamming Distance
 7. 求补码 Number Complement
+8. 1到N有多少个1 Count One

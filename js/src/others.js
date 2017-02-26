@@ -157,4 +157,13 @@ export default class Others {
     findComplement = function(num) {
         return Math.pow(2,num.toString(2).length)-num-1;
     };
+    countOne = function(num){
+        let length=0;
+        for(let i=1;i<=num;i++){
+            let t=i.toString().match(/1/g);
+            if(t!=null)
+                length+=t.length;
+        }
+        return length;
+    };
 }
