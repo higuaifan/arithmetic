@@ -145,7 +145,7 @@ export default class Others {
         };
         jump([{'x': x, 'y': y}], x, y, 1);
     }
-    hammingDistance = function(x, y) {
+    hammingDistance(x, y) {
         let t=(x^y).toString(2);
         let flag=0;
         for(let i in t){
@@ -154,10 +154,10 @@ export default class Others {
         }
         return flag;
     };
-    findComplement = function(num) {
+    findComplement(num) {
         return Math.pow(2,num.toString(2).length)-num-1;
     };
-    countOne = function(num){
+    countOne(num){
         let length=0;
         for(let i=1;i<=num;i++){
             let t=i.toString().match(/1/g);
