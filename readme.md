@@ -32,3 +32,6 @@
 6. 汉明距离 Hamming Distance
 7. 求补码 Number Complement
 8. 1到N有多少个1 Count One
+9. 求船的数量 Battleships in a Board
+10. 求单词的每个字母是不是在键盘的同一行上 Keyboard Row
+11. 时间O(n)求二进制中1的数量 Counting Bits

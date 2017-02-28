@@ -81,10 +81,21 @@ let others = new Others();
 // others.hundredChicken(100);
 
 
-let resArray = [{'weight': 3, 'num': 5},
-    {'weight': 4, 'num': 2},
-    {'weight': 5, 'num': 1}];
+// let resArray = [{'weight': 3, 'num': 5},
+//     {'weight': 4, 'num': 2},
+//     {'weight': 5, 'num': 1}];
 
 
 // others.Knapsack(resArray, 10);
-others.house(0,0,8,8);
+// others.house(0, 0, 8, 8);
+
+// let board = {
+//     0: {0: 'X', 1: 'X', 2: '.', 3: 'X'},
+//     1: {0: '.', 1: 'X', 2: 'X', 3: 'X'},
+//     2: {0: 'X', 1: 'X', 2: '.', 3: 'X'}
+// };
+
+// let words=["Hello","Alaska","Dad","Peace"];
+// console.log(others.findWords(words));
+
+console.log(others.countBits(8));

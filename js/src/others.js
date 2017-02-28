@@ -145,25 +145,93 @@ export default class Others {
         };
         jump([{'x': x, 'y': y}], x, y, 1);
     }
+
     hammingDistance(x, y) {
-        let t=(x^y).toString(2);
-        let flag=0;
-        for(let i in t){
-            if(t[i]=='1')
+        let t = (x ^ y).toString(2);
+        let flag = 0;
+        for (let i in t) {
+            if (t[i] == '1')
                 flag++;
         }
         return flag;
     };
+
     findComplement(num) {
-        return Math.pow(2,num.toString(2).length)-num-1;
+        return Math.pow(2, num.toString(2).length) - num - 1;
     };
-    countOne(num){
-        let length=0;
-        for(let i=1;i<=num;i++){
-            let t=i.toString().match(/1/g);
-            if(t!=null)
-                length+=t.length;
+
+    countOne(num) {
+        let length = 0;
+        for (let i = 1; i <= num; i++) {
+            let t = i.toString().match(/1/g);
+            if (t != null)
+                length += t.length;
         }
         return length;
     };
+
+    countBattleShips(board) {
+        let ships = 0;
+        let find = function (i, j) {
+            board[i][j] = '.';
+            if (board[i + 1] != undefined && board[i + 1][j] == 'X') {
+                find(i + 1, j);
+            }
+            if (board[i - 1] != undefined && board[i - 1][j] == 'X') {
+                find(i - 1, j);
+            }
+            if (board[i][j + 1] == 'X') {
+                find(i, j + 1);
+            }
+            if (board[i][j - 1] == 'X') {
+                find(i, j - 1);
+            }
+        };
+        for (let line in board) {
+            line = parseInt(line);
+            for (let i in board[line]) {
+                i = parseInt(i);
+                if (board[line][i] == 'X') {
+                    ships++;
+                    find(line, i);
+                }
+            }
+        }
+        return ships;
+    };
+
+    findWords(words) {
+        const one = 'qwertyuiopQWERTYUIOP';
+        const two = 'asdfghjklASDFGHJKL';
+        const three = 'zxcvbnmZXCVBNM';
+        let arr=[];
+        for (let word of words) {
+            let search;
+            if (one.indexOf(word[0]) !== -1)
+                search = one;
+            if (two.indexOf(word[0]) !== -1)
+                search = two;
+            if (three.indexOf(word[0]) !== -1)
+                search = three;
+            let flag = true;
+            for (let key of word) {
+                if (search.indexOf(key) === -1) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                arr.push(word);
+            }
+        }
+        return arr;
+    };
+
+    countBits(num){
+        let arr=[0];
+        for(let i=1;i<=num;i++)
+            arr[i] = arr[i >> 1] + (i & 1);
+        return arr;
+    };
+
 }
