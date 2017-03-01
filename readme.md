@@ -35,3 +35,5 @@
 9. 求船的数量 Battleships in a Board
 10. 求单词的每个字母是不是在键盘的同一行上 Keyboard Row
 11. 时间O(n)求二进制中1的数量 Counting Bits
+12. 3倍和5倍字符串填充 Fizz Buzz
+13. 从数组中取出一个数，找它后面是否有大于它的数 Next Greater Element

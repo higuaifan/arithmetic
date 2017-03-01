@@ -204,7 +204,7 @@ export default class Others {
         const one = 'qwertyuiopQWERTYUIOP';
         const two = 'asdfghjklASDFGHJKL';
         const three = 'zxcvbnmZXCVBNM';
-        let arr=[];
+        let arr = [];
         for (let word of words) {
             let search;
             if (one.indexOf(word[0]) !== -1)
@@ -227,10 +227,55 @@ export default class Others {
         return arr;
     };
 
-    countBits(num){
-        let arr=[0];
-        for(let i=1;i<=num;i++)
+    countBits(num) {
+        let arr = [0];
+        for (let i = 1; i <= num; i++)
             arr[i] = arr[i >> 1] + (i & 1);
+        return arr;
+    };
+
+    fizzBuzz(n) {
+        let arr = [];
+        for (let i = 1; i <= n; i++) {
+            let str = "";
+            let flag = true;
+            if (i % 3 === 0) {
+                flag = false;
+                str = "Fizz";
+            }
+            if (i % 5 === 0) {
+                flag = false;
+                str += "Buzz";
+            }
+            if (flag) {
+                str = i + "";
+            }
+            arr.push(str);
+        }
+        return arr;
+    };
+
+    nextGreaterElement(findNums, nums) {
+        let map = [];
+        let len = nums.length;
+        for (let i in nums) {
+            map[nums[i]] = {num: nums[i]};
+            for (let j = i; j < len; j++) {
+                if (nums[j] > nums[i]) {
+                    map[nums[i]].max = nums[j];
+                    break;
+                }
+            }
+        }
+        let arr = [];
+        for (let num of findNums) {
+            if (map[num].max === undefined) {
+                arr.push(-1);
+            } else {
+                arr.push(map[num].max);
+            }
+        }
+
         return arr;
     };
 

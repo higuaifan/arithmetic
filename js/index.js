@@ -98,4 +98,4 @@ let others = new Others();
 // let words=["Hello","Alaska","Dad","Peace"];
 // console.log(others.findWords(words));
 
-console.log(others.countBits(8));
+console.log(others.nextGreaterElement([4,1,2],[1,3,4,2]));
