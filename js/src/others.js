@@ -279,4 +279,21 @@ export default class Others {
         return arr;
     };
 
+    islandPerimeter(grid) {
+        let count = 0;
+        let block = 0;
+        let len=grid[0].length;
+        for(let i=0;i<grid.length;i++){
+            for(let j=0;j<len;j++){
+                if (1 === grid[i][j]) {
+                    block++;
+                    if (grid[i + 1] !== undefined && 1 === grid[i + 1][j])
+                        count++;
+                    if ( 1 === grid[i][j+1])
+                        count++;
+                }
+            }
+        }
+        return block*4-count*2;
+    };
 }
