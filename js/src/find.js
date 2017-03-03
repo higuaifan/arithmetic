@@ -93,4 +93,29 @@ export default class Find {
         return search(nextArray);
     }
 
+
+    TreeNode(val) {
+         this.val = val;
+         this.left = this.right = null;
+    }
+
+    findBottomLeftValue(root) {
+        let index=0;
+        let num=root.val;
+        let find=function(r,deep){
+                if(deep>index){
+                    num=r.val;
+                    index=deep;
+                }
+            if(r.left!==null){
+                find(r.left,deep+1);
+            }
+            if(r.right!==null){
+                find(r.right,deep+1);
+            }
+        };
+        find(root,0);
+        return num;
+    };
+
 }
