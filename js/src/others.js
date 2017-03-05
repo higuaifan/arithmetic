@@ -282,18 +282,33 @@ export default class Others {
     islandPerimeter(grid) {
         let count = 0;
         let block = 0;
-        let len=grid[0].length;
-        for(let i=0;i<grid.length;i++){
-            for(let j=0;j<len;j++){
+        let len = grid[0].length;
+        for (let i = 0; i < grid.length; i++) {
+            for (let j = 0; j < len; j++) {
                 if (1 === grid[i][j]) {
                     block++;
                     if (grid[i + 1] !== undefined && 1 === grid[i + 1][j])
                         count++;
-                    if ( 1 === grid[i][j+1])
+                    if (1 === grid[i][j + 1])
                         count++;
                 }
             }
         }
-        return block*4-count*2;
+        return block * 4 - count * 2;
+    };
+
+    findMaxConsecutiveOnes(nums) {
+        let count = 0;
+        let max = 0;
+        for (let n of nums) {
+            if (1 === n) {
+                count++;
+                if (max < count) {
+                    max = count;
+                }
+            } else
+                count = 0;
+        }
+        return max;
     };
 }
