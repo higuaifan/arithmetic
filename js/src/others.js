@@ -311,4 +311,8 @@ export default class Others {
         }
         return max;
     };
+
+    canWinNim(n) {
+        return n%4!==0;
+    };
 }
